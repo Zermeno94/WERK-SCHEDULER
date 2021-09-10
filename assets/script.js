@@ -1,16 +1,23 @@
-// shows current date and time
-var todayDate = moment().format('MMMM Do YYYY, h:mm:ss a');
-$("#currentDay").html(todayDate);
-var saveBtn =$(".saveBtn");
+$(document).ready(function() { // pulls html & css 
+    // shows current date and time 
+    var todayDate = moment().format('MMMM Do YYYY, h:mm:ss a'); // format pulled from moment js.
+    $("#currentDay").html(todayDate); // format pulled from moment js.
 
-$(".saveBtn").on("click", function () {
-    console.log(this);
-    var text = $(this).siblings(".description").val(); 
-    var time = $(this).parent().attr("id"); 
-    
-    localStorage.setItem(time, text);
-})
 
+    // responsive save button 
+    $(".saveBtn").on("click", function() {
+      var text = $(this).siblings(".description").val(); // declares text 
+      var time = $(this).parent().attr("id"); // declares time 
+
+      //local storage 
+      localStorage.setItem(time, text);
+    });
+
+    //Need to do:
+    // color change for past, present, future 
+    // local storage not functioning. 
+  
+    // save date to local storage for each hour 
     $("#8am-hour .description").val(localStorage.getItem("8am-hour"));
 
     $("#9am-hour .description").val(localStorage.getItem("9am-hour"));
@@ -30,6 +37,5 @@ $(".saveBtn").on("click", function () {
     $("#16pm-hour .description").val(localStorage.getItem("16pm-hour"));
 
     $("#17pm-hour .description").val(localStorage.getItem("17pm-hour"));
-
-    plannerTracker();
-
+  
+  });
